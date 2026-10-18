@@ -1,0 +1,26 @@
+experiment_name: videomae_cvb_to_cbvd5_v1
+model_name: MCG-NJU/videomae-base-finetuned-kinetics
+num_classes: 7
+labels_csv: data/processed/tubelets/labels.csv
+
+train:
+  dataset_filter: cvb
+  split_filter: train
+  label_subset: null
+
+val:
+  dataset_filter: cbvd5
+  split_filter: val
+  label_subset: [0, 1, 2, 3, 4]
+
+batch_size: 8
+grad_accum_steps: 4
+num_epochs: 30
+lr: 5.0e-5
+lr_head: 1.0e-3
+weight_decay: 0.05
+warmup_epochs: 3
+early_stopping_patience: 8
+use_class_weights: true
+
+output_dir: runs/behavior/videomae_cvb_to_cbvd5_v1

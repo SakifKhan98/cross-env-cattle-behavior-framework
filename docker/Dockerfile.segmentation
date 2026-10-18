@@ -1,0 +1,32 @@
+# cattle-vision-framework — SAM2 segmentation image
+# Covers script 07_run_segmentation.sh: SAM2 inference to generate mask RLEs
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Sakif Khan <sakif@txstate.edu>"
+LABEL description="SAM2 segmentation inference for cattle mask generation"
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── SAM2 (installed from source — not available on PyPI at time of writing) ───
+RUN pip install --no-cache-dir \
+    "sam2 @ git+https://github.com/facebookresearch/sam2.git" \
+    opencv-python-headless \
+    pycocotools \
+    tqdm \
+    pyyaml
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /workspace
+
+# SAM2 checkpoint must be mounted at /workspace/weights/sam2.1_hiera_large.pt
+ENTRYPOINT ["python3"]

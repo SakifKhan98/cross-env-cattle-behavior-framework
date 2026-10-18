@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Large data (download separately — see docs/datasets.md)
+data/raw/
+data/processed/
+data/rfdetr_seg/
+data/rfdetr_seg_eval/
+
+# Model weights and checkpoints (download from HuggingFace — see docs/setup.md)
+weights/
+models/
+*.pth
+*.pt
+*.tar.gz
+*.ckpt
+
+# Training run artifacts (large/binary; logs are mirrored in logs/ and results/)
+*.tfevents.*
+runs/
+
+# Third-party source repos (populated by setup steps — see docs/setup.md)
+third_party/
+
+# Video files (too large for git)
+*.mp4
+*.avi
+*.mov
+
+# Notebook outputs
+notebooks/.ipynb_checkpoints/
+
+# Frontend build artifacts
+ui/dist/
+ui/node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

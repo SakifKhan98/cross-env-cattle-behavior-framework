@@ -1,0 +1,18 @@
+Device: cuda
+Eval split='val': 154 samples
+Loaded checkpoint: epoch=7  saved_val_macro_f1=0.17894082472395725
+
+Class               F1   Prec Recall
+--------------------------------------
+Standing        0.6747 0.6022 0.7671
+Lying           0.1455 0.1333 0.1600
+Foraging        0.4324 0.7619 0.3019
+Drinking        0.0000 0.0000 0.0000
+Ruminating      0.0000 0.0000 0.0000
+Grooming        0.0000 0.0000 0.0000
+Other           0.0000 0.0000 0.0000
+--------------------------------------
+Macro-F1        0.1789
+Confusion matrix saved → results/behavior/confusion_matrices/videomae_cvb_to_cbvd5_v1_val.png
+Per-class metrics saved → results/behavior/f1_per_class.csv
+Per-tubelet predictions saved → results/behavior/predictions/videomae_cvb_to_cbvd5_v1_val.csv

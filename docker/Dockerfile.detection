@@ -1,0 +1,40 @@
+# cattle-vision-framework — RF-DETR-Seg training image
+# Base: PyTorch 2.3 + CUDA 12.1 (compatible with V100 / RTX 3060)
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Sakif Khan <sakif@txstate.edu>"
+LABEL description="RF-DETR-Seg fine-tuning on cattle SAM2 pseudo-labels"
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Python deps ───────────────────────────────────────────────────────────────
+# transformers>=4.38 requires torch.utils._pytree.register_pytree_node
+# which only exists in PyTorch 2.3+. The pytorch:2.3.0 base image ships
+# with an older transformers that causes an AttributeError at import time.
+# Pin transformers==4.37.2 — last version compatible with PyTorch 2.3
+# pytree API before the breaking rename in 4.38.
+RUN pip install --no-cache-dir \
+    "rfdetr>=1.4.0" \
+    supervision \
+    pycocotools \
+    Pillow \
+    opencv-python-headless \
+    albumentations \
+    tensorboard \
+    tqdm
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /workspace
+
+# ── Entrypoint: run whatever script is passed as CMD ─────────────────────────
+ENTRYPOINT ["python3"]

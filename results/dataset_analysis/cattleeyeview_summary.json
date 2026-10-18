@@ -1,0 +1,23 @@
+{
+  "dataset": "cattleeyeview",
+  "total_images_or_frames": 11070,
+  "total_annotations": 24054,
+  "splits": {
+    "train": 8422,
+    "val": 2648,
+    "test": 2648
+  },
+  "class_distribution": {
+    "cow": 24054
+  },
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "has_behavior_labels": false,
+  "evaluation_scope": [
+    "detection_map",
+    "mask_iou",
+    "tracking_idf1"
+  ]
+}

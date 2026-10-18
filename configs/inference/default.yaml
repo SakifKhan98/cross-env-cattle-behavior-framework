@@ -1,0 +1,46 @@
+# configs/inference/default.yaml
+# Phase 9 — Real-Time Inference Pipeline
+#
+# All paths are relative to the repository root unless absolute.
+# Override any key at runtime by merging a partial YAML on top of this file.
+
+input:
+  # Path to the video file to process (required at runtime; no default).
+  video_path: ""
+
+models:
+  # RF-DETR-Seg checkpoint (detection + segmentation in one pass).
+  rfdetr_seg_checkpoint: "runs/seg_medium_lr5e5/checkpoint_best_ema.pth"
+
+  # VideoMAE behavior checkpoint.
+  # Defaults to the combined-dataset config (Config 5), which covers all 7 classes.
+  videomae_checkpoint: "runs/behavior/videomae_combined_v1/checkpoint_best.pt"
+
+detection:
+  # Minimum score to keep a detection box.
+  confidence_threshold: 0.3
+  # Input resolution fed to RF-DETR-Seg (must be divisible by 64).
+  resolution: 640
+
+tracking:
+  # OC-SORT hyperparameters — mirrors the values used in Phase 4.
+  det_thresh: 0.3
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+  delta_t: 3
+  asso_func: "iou"
+  inertia: 0.2
+  use_byte: false
+
+behavior:
+  # Tubelet parameters — must match the trained VideoMAE model.
+  clip_len: 16          # frames per tubelet
+  frame_stride: 4       # frame sampling stride
+  input_size: 224       # spatial crop (px)
+
+output:
+  # Root directory for all pipeline outputs.
+  output_root: "results/inference"
+  # Remove intermediate files (detection JSONs, tubelet clips) after the run.
+  cleanup: false

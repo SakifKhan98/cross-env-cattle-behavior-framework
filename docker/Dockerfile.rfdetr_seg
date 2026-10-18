@@ -1,0 +1,35 @@
+# cattle-vision-framework — RF-DETR-Seg distillation training image
+# Covers script 07_train_rfdetr_seg.sh: train RF-DETR-Seg on SAM2 pseudo-labels
+# Runs on HiPE1 (2x Tesla V100) via Docker
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Sakif Khan <sakif@txstate.edu>"
+LABEL description="RF-DETR-Seg fine-tuning on cattle SAM2 pseudo-labels (HiPE1 training)"
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Python deps ───────────────────────────────────────────────────────────────
+RUN pip install --no-cache-dir \
+    "rfdetr>=1.4.0" \
+    supervision \
+    pycocotools \
+    Pillow \
+    opencv-python-headless \
+    albumentations \
+    tensorboard \
+    tqdm
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /workspace
+
+ENTRYPOINT ["python3"]

@@ -1,0 +1,27 @@
+{
+  "dataset": "cbvd5",
+  "total_images_or_frames": 4122,
+  "total_annotations": 37863,
+  "splits": {
+    "train": 492,
+    "val": 50,
+    "test": 0
+  },
+  "class_distribution": {
+    "0": 15823,
+    "1": 9506,
+    "2": 5711,
+    "3": 744,
+    "4": 6079
+  },
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "has_behavior_labels": true,
+  "evaluation_scope": [
+    "behavior_f1",
+    "in_domain",
+    "cross_domain_source"
+  ]
+}

@@ -1,0 +1,20 @@
+# configs/segmentation/sam2.yaml
+# Phase 3 — SAM2 Segmentation Configuration
+
+sam2:
+  checkpoint: "models/sam2/sam2.1_hiera_large.pt"
+  model_config: "sam2.1/sam2.1_hiera_l"
+  score_threshold: 0.3
+  reprompt_interval: 15
+
+paths:
+  detection_dir: "data/processed/tracking"
+  segmentation_dir: "data/processed/segmentation"
+  cbvd5_frames: "data/raw/cbvd5/labelframes/labelframes"
+  cvb_frames: "data/raw/cvb/raw_frames"
+
+# Controls how much data is saved for thesis reporting
+logging:
+  # Number of sample overlay images to save for thesis figures
+  # These are saved to results/segmentation/viz/{dataset}/
+  n_viz_samples: 20

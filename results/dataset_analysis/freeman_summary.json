@@ -1,0 +1,38 @@
+{
+  "dataset": "freeman",
+  "total_images_or_frames": 39363,
+  "total_annotations": 196365,
+  "splits": {
+    "train": 24507,
+    "val": 8231,
+    "test": 6625
+  },
+  "class_distribution": {
+    "0": 47855,
+    "1": 50186,
+    "2": 76572,
+    "3": 15786,
+    "4": 2404,
+    "5": 1178,
+    "6": 1128,
+    "7": 667,
+    "8": 589
+  },
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "has_behavior_labels": true,
+  "evaluation_scope": [
+    "detection_map",
+    "tracking_idf1",
+    "behavior_f1",
+    "activity_budgets",
+    "ood_generalization"
+  ],
+  "notes": {
+    "class_distribution_keys": "raw Freeman IDs 0-8 (not canonical); mapping partially open",
+    "open_decision": "class 2 'normal' mapping to canonical ID unresolved",
+    "tentative_mappings": "classes 3,5,7,8 tentatively mapped to Other (canonical 6)"
+  }
+}

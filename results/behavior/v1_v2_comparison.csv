@@ -1,0 +1,6 @@
+config,name,v1_macro_f1,v2_macro_f1,delta
+videomae_cbvd5,CBVD-5 in-domain,0.314932,0.451127,+0.136
+videomae_cvb,CVB in-domain,0.760656,0.776986,+0.016
+videomae_combined,Combined,0.753655,0.750660,-0.003
+videomae_cbvd5_to_cvb,CBVD-5 → CVB (cross-domain),0.168956,0.172232,+0.003
+videomae_cvb_to_cbvd5,CVB → CBVD-5 (cross-domain),0.178941,0.225310,+0.046

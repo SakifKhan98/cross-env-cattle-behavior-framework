@@ -1,0 +1,16 @@
+{
+  "dataset": "cattleeyeview",
+  "checkpoint": "runs/detection/rfdetr_combined_v1/checkpoint_best_total.pth",
+  "threshold": 0.3,
+  "n_images": 2490,
+  "n_detections": 6868,
+  "mAP": 0.3209,
+  "mAP50": 0.47,
+  "mAP75": 0.3339,
+  "mAP_s": 0.0,
+  "mAP_m": 0.0032,
+  "mAP_l": 0.3335,
+  "AR1": 0.2135,
+  "AR10": 0.4955,
+  "AR100": 0.4961
+}

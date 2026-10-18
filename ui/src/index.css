@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Class-based dark mode for manual toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* TXST dark mode surface tokens — used in inline styles via var() */
+:root {
+  --chart-track: #e5e7eb;
+}
+.dark {
+  --chart-track: #3D1517;
+}

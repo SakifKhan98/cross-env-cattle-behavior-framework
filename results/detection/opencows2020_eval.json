@@ -1,0 +1,16 @@
+{
+  "dataset": "opencows2020",
+  "checkpoint": "runs/detection/rfdetr_combined_v1/checkpoint_best_total.pth",
+  "threshold": 0.3,
+  "n_images": 7039,
+  "n_detections": 22116,
+  "mAP": 0.0705,
+  "mAP50": 0.3326,
+  "mAP75": 0.0066,
+  "mAP_s": 0.0,
+  "mAP_m": 0.0559,
+  "mAP_l": 0.0757,
+  "AR1": 0.1017,
+  "AR10": 0.21,
+  "AR100": 0.2101
+}

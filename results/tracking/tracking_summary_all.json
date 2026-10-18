@@ -1,0 +1,21 @@
+{
+  "config": {
+    "split": "all",
+    "iou_thresh": 0.5
+  },
+  "results": {
+    "videos_evaluated": 447,
+    "total_gt": 38609,
+    "total_pred": 45499,
+    "total_tp": 29887,
+    "total_fp": 15612,
+    "total_fn": 8722,
+    "total_id_switches": 141,
+    "MOTA": 36.61,
+    "MOTP": 77.42,
+    "IDF1": 67.31,
+    "Precision": 65.69,
+    "Recall": 77.41,
+    "Avg_IDS_per_video": 0.32
+  }
+}

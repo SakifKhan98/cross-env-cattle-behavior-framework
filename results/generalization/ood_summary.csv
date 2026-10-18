@@ -1,0 +1,6 @@
+dataset,n_images,mAP50,mAP50_95,AR100,mAP_s,mAP_m,mAP_l,mean_mask_iou,domain_shift_note,behavior_macro_f1_4class
+opencows2020,7039,0.3326,0.0705,0.2101,0.0,0.0559,0.0757,,aerial top-down UAV,
+cows2021,2131,0.2729,0.0624,0.2221,,,0.0624,,indoor UK barn,
+cattleeyeview,2490,0.47,0.3209,0.4961,0.0,0.0032,0.3335,0.8653,top-down outdoor polygon masks,
+freeman,6625,0.7298,0.443,0.4991,0.0306,0.3983,0.7105,,angled real ranch,
+mmcows,5040,0.324,0.1829,0.2131,,,0.1829,,indoor isometric corner-mounted 4-camera barn,

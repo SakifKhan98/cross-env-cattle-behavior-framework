@@ -1,0 +1,16 @@
+{
+  "dataset": "freeman",
+  "checkpoint": "runs/detection/rfdetr_combined_v1/checkpoint_best_total.pth",
+  "threshold": 0.3,
+  "n_images": 6625,
+  "n_detections": 31653,
+  "mAP": 0.443,
+  "mAP50": 0.7298,
+  "mAP75": 0.4763,
+  "mAP_s": 0.0306,
+  "mAP_m": 0.3983,
+  "mAP_l": 0.7105,
+  "AR1": 0.1429,
+  "AR10": 0.4973,
+  "AR100": 0.4991
+}

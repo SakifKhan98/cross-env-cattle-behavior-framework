@@ -1,0 +1,36 @@
+# cattle-vision-framework — VideoMAE behavior classification image
+# Base: PyTorch 2.3 + CUDA 12.1 (compatible with V100 / RTX 3060)
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Sakif Khan <sakif@txstate.edu>"
+LABEL description="VideoMAE-Base fine-tuning for cattle behavior classification"
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Python deps ───────────────────────────────────────────────────────────────
+RUN pip install --no-cache-dir \
+    "transformers>=4.40,<5.0" \
+    "accelerate" \
+    "timm" \
+    "scikit-learn" \
+    "pyyaml" \
+    "pandas" \
+    "tqdm" \
+    "opencv-python-headless" \
+    "matplotlib"
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /workspace
+
+# ── Entrypoint: training/eval script is volume-mounted at runtime ─────────────
+ENTRYPOINT ["python3"]

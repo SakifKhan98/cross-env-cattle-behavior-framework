@@ -1,0 +1,44 @@
+# ============================================================
+# RF-DETR Detection Config — Combined (CBVD-5 + CVB)
+# GPU: RTX 3060 (12 GB VRAM)
+# Effective batch size: 2 × 8 = 16
+#
+# NOTE: Resolution MUST be divisible by 64 (RF-DETR backbone requirement)
+# Valid options for RTX 3060: 512, 576, 640, 672, 704
+# 640 is the safe default. Try 672 if training is stable.
+# ============================================================
+
+experiment_name: rfdetr_combined_v1
+
+model:
+  type: RFDETRMedium
+
+dataset:
+  name: combined
+  dataset_dir: data/processed/detection/combined
+  num_classes: 1
+
+training:
+  epochs: 100
+  batch_size: 2                 # Reduced from 4 — fixes OOM on RTX 3060
+  grad_accum_steps: 8           # Increased to maintain effective batch = 16
+  resolution: 576               # 576 = 64x9, smallest div-64 above 560, saves VRAM vs 640
+  lr: 1.0e-4
+  lr_encoder: 1.5e-4
+  weight_decay: 1.0e-4
+  gradient_checkpointing: true  # ~30% VRAM reduction, ~20% slower — needed for 12GB
+
+  early_stopping: true
+  early_stopping_patience: 15
+  early_stopping_min_delta: 0.005
+  early_stopping_use_ema: true
+
+  use_ema: true
+
+output:
+  output_dir: runs/detection/rfdetr_combined_v1
+  tensorboard: true
+  checkpoint_interval: 10
+
+augmentation:
+  preset: AUG_CONSERVATIVE

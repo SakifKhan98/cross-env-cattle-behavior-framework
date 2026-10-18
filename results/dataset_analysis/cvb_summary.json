@@ -1,0 +1,30 @@
+{
+  "dataset": "cvb",
+  "total_images_or_frames": 225829,
+  "total_annotations": 1024776,
+  "splits": {
+    "train": 358,
+    "val": 89,
+    "test": 0
+  },
+  "class_distribution": {
+    "0": 137987,
+    "1": 208586,
+    "2": 496394,
+    "3": 33379,
+    "4": 105103,
+    "5": 16690,
+    "6": 26637
+  },
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "has_behavior_labels": true,
+  "evaluation_scope": [
+    "behavior_f1",
+    "in_domain",
+    "cross_domain_source",
+    "cross_domain_target"
+  ]
+}

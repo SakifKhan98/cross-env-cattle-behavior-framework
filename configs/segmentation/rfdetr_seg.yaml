@@ -1,0 +1,28 @@
+# configs/segmentation/rfdetr_seg.yaml
+# Phase 3 — RF-DETR-Seg Segmentation (SAM2 teacher → student distillation)
+#
+# Runs the fine-tuned RF-DETR-Seg model on raw video frames to produce
+# instance segmentation masks. Replaces SAM2 in the pipeline — outputs
+# the same _masks.json format for downstream tracking compatibility.
+
+rfdetr_seg:
+  checkpoint: "runs/seg_medium_lr5e5/checkpoint_best_ema.pth"
+  score_threshold: 0.3
+  resolution: 640
+
+paths:
+  output_dir: "data/processed/segmentation_rfdetr"
+
+dataset:
+  cbvd5:
+    frames_dir: "data/raw/cbvd5/labelframes/labelframes"
+    pattern: "{video_id}_{timestamp:05d}.jpg"
+    fps: 30
+    width: 1920
+    height: 1080
+  cvb:
+    frames_dir: "data/raw/cvb/raw_frames"
+    pattern: "img_{frame:05d}.jpg"
+    fps: 30
+    width: 1920
+    height: 1080

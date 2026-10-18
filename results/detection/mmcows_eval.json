@@ -1,0 +1,16 @@
+{
+  "dataset": "mmcows",
+  "checkpoint": "runs/seg_medium_lr5e5/checkpoint_best_ema.pth",
+  "threshold": 0.3,
+  "n_images": 5040,
+  "n_detections": 20470,
+  "mAP": 0.1829,
+  "mAP50": 0.324,
+  "mAP75": 0.1718,
+  "mAP_s": -1.0,
+  "mAP_m": -1.0,
+  "mAP_l": 0.1829,
+  "AR1": 0.0673,
+  "AR10": 0.2131,
+  "AR100": 0.2131
+}

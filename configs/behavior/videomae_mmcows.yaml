@@ -1,0 +1,30 @@
+# mmCows zero-shot behavior OOD evaluation — VideoMAE combined_v2 checkpoint.
+#
+# Evaluated classes: Standing (0), Lying (1), Foraging/Grazing (2), Grooming (5).
+#
+# Excluded classes and rationale:
+#   Ruminating (3)   — no mmCows analog; the dataset has no equivalent behavior code.
+#   Drinking  (6)    — ~86 tubelets after filtering; insufficient support for reliable F1.
+#   Walking/Other    — mmCows code 1 (Walking) and code 6 (Drinking) are both dropped in
+#                      the tubelet converter; Other has no mmCows analog.
+#
+# Temporal mismatch caveat: VideoMAE was trained on 30 fps footage (stride 4 → ~0.13 s
+# between tubelet frames). mmCows images are captured at ~0.067 fps (one frame per 15 s),
+# so tubelet frames are ~115× slower. This is expected to depress classification accuracy
+# relative to in-domain results and must be noted as a known limitation in the thesis.
+#
+# Label mapping approximation: mmCows code 5 (licking) maps to Grooming (canonical 5).
+# Licking is a form of self-grooming but is narrower than the CVB "grooming" class.
+
+experiment_name: mmcows
+model_name: MCG-NJU/videomae-base-finetuned-kinetics
+num_classes: 7
+labels_csv: data/processed/tubelets/mmcows/labels.csv
+
+val:
+  dataset_filter: mmcows
+  split_filter: eval
+  label_subset: [0, 1, 2, 5]
+
+batch_size: 8
+output_dir: runs/behavior/videomae_mmcows

@@ -1,0 +1,51 @@
+{
+  "dataset": "mmcows",
+  "total_images_or_frames": 20153,
+  "total_annotations": 213705,
+  "splits": {
+    "cam_1": 5040,
+    "cam_2": 5037,
+    "cam_3": 5036,
+    "cam_4": 5040
+  },
+  "class_distribution": {
+    "code_0_Unknown_unlabeled": 242647,
+    "code_1_Walking": 16836,
+    "code_2_Standing": 287358,
+    "code_3_Foraging head-up": 79784,
+    "code_4_Foraging head-down": 130059,
+    "code_5_Grooming (licking)": 7953,
+    "code_6_Drinking": 13978,
+    "code_7_Lying": 603785
+  },
+  "canonical_class_distribution_cow_seconds": {
+    "class_2_Foraging": 209843,
+    "class_0_Standing": 287358,
+    "class_1_Lying": 603785,
+    "class_5_Grooming": 7953
+  },
+  "resolution": {
+    "width": 4480,
+    "height": 2800
+  },
+  "has_behavior_labels": true,
+  "evaluation_scope": [
+    "detection_map",
+    "behavior_macro_f1_4class"
+  ],
+  "n_cows": 16,
+  "frame_rate_fps": 0.0667,
+  "recording_date": "2023-07-25",
+  "eval_camera": "cam_4",
+  "behavior_classes_evaluated": [
+    0,
+    1,
+    2,
+    5
+  ],
+  "behavior_classes_dropped": {
+    "code_0": "unknown",
+    "code_1": "walking_low_support",
+    "code_6": "drinking_low_support"
+  }
+}

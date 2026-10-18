@@ -1,0 +1,12 @@
+[CBVD-5] loaded 11369 existing rows from data/processed/tubelets/labels.csv
+[CVB] loaded 447 video splits
+[CVB] processed 50 videos, 23681 tubelets so far
+[CVB] processed 100 videos, 39343 tubelets so far
+[CVB] processed 150 videos, 49773 tubelets so far
+[CVB] processed 200 videos, 61893 tubelets so far
+[CVB] processed 250 videos, 77753 tubelets so far
+[CVB] processed 300 videos, 90559 tubelets so far
+[CVB] processed 350 videos, 108341 tubelets so far
+[CVB] processed 400 videos, 118317 tubelets so far
+[CVB] done — 114217 new CVB tubelets
+Wrote 125586 rows → data/processed/tubelets/labels.csv

@@ -1,0 +1,112 @@
+---
+# cattle-vision-framework — Docker Compose
+# Each service maps to one or more numbered pipeline scripts.
+# Run a single stage: docker compose run <service> python3 src/...
+# Run the full pipeline: bash scripts/run_pipeline.sh
+#
+# Prerequisites:
+#   - NVIDIA Container Toolkit installed (for GPU services)
+#   - third_party/OC_SORT/ cloned (for tracking service — see docs/setup.md)
+#   - models/ populated (see docs/setup.md for download commands)
+#
+# Shared volumes (mounted read-write unless :ro):
+#   ../data       → /workspace/data
+#   ../results    → /workspace/results
+#   ../runs       → /workspace/runs      (GPU training outputs)
+#   ../configs    → /workspace/configs   (read-only)
+#   ../src        → /workspace/src       (read-only)
+#   ../models     → /workspace/models    (read-only)
+
+services:
+
+  # Scripts 01–04, 09, 12 — dataset prep, tubelet export, analytics (CPU)
+  data:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.data
+    image: cattle-data
+    volumes:
+      - ../data:/workspace/data
+      - ../results:/workspace/results
+      - ../configs:/workspace/configs:ro
+      - ../src:/workspace/src:ro
+
+  # Scripts 05–06 — RF-DETR detection training + inference (GPU)
+  detection:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.detection
+    image: cattle-detection
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    shm_size: "16g"
+    volumes:
+      - ../data:/workspace/data
+      - ../runs:/workspace/runs
+      - ../configs:/workspace/configs:ro
+      - ../src:/workspace/src:ro
+      - ../models:/workspace/models:ro
+
+  # Script 07_run_segmentation.sh — SAM2 inference (GPU, memory-heavy)
+  segmentation:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.segmentation
+    image: cattle-segmentation
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    shm_size: "16g"
+    volumes:
+      - ../data:/workspace/data
+      - ../models:/workspace/models:ro
+      - ../src:/workspace/src:ro
+
+  # Script 07_train_rfdetr_seg.sh — RF-DETR-Seg distillation (GPU, HiPE1)
+  rfdetr_seg:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.rfdetr_seg
+    image: cattle-rfdetr-seg
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    shm_size: "16g"
+    volumes:
+      - ../data:/workspace/data
+      - ../runs:/workspace/runs
+      - ../configs:/workspace/configs:ro
+      - ../src:/workspace/src:ro
+      - ../models:/workspace/models:ro
+      - ../scripts/hipe:/workspace/scripts/hipe:ro
+
+  # Script 08_run_tracking.sh — OC-SORT tracking (CPU)
+  tracking:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.tracking
+    image: cattle-tracking
+    volumes:
+      - ../data:/workspace/data
+      - ../configs:/workspace/configs:ro
+      - ../src:/workspace/src:ro
+      - ../third_party:/workspace/third_party:ro
+
+  # Scripts 10–11 — VideoMAE behavior training + evaluation (GPU)
+  behavior:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.behavior
+    image: cattle-behavior
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    shm_size: "16g"
+    volumes:
+      - ../data:/workspace/data
+      - ../runs:/workspace/runs
+      - ../configs:/workspace/configs:ro
+      - ../src:/workspace/src:ro
+      - ../results:/workspace/results
+      - ../models:/workspace/models:ro

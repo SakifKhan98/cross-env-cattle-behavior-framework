@@ -1,0 +1,16 @@
+{
+  "dataset": "cbvd5",
+  "checkpoint": "runs/detection/rfdetr_combined_v1/checkpoint_best_total.pth",
+  "threshold": 0.3,
+  "n_images": 292,
+  "n_detections": 3065,
+  "mAP": 0.1548,
+  "mAP50": 0.4591,
+  "mAP75": 0.0552,
+  "mAP_s": -1.0,
+  "mAP_m": 0.0018,
+  "mAP_l": 0.1663,
+  "AR1": 0.0447,
+  "AR10": 0.2085,
+  "AR100": 0.2428
+}

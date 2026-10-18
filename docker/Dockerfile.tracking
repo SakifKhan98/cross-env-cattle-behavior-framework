@@ -1,0 +1,33 @@
+# cattle-vision-framework — OC-SORT tracking image
+# Covers script 08_run_tracking.sh
+# Requires third_party/OC_SORT/ to be cloned before building (see docs/setup.md)
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Sakif Khan <sakif@txstate.edu>"
+LABEL description="OC-SORT multi-object tracking for cattle video sequences"
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Python deps ───────────────────────────────────────────────────────────────
+RUN pip install --no-cache-dir \
+    scipy \
+    "lap>=0.4" \
+    filterpy \
+    opencv-python-headless \
+    pycocotools \
+    pyyaml \
+    tqdm
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /workspace
+
+# third_party/OC_SORT must be volume-mounted at /workspace/third_party/OC_SORT
+# (see docs/setup.md for clone instructions)
+ENTRYPOINT ["python3"]

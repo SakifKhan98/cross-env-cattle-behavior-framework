@@ -1,0 +1,39 @@
+Device: cuda
+/workspace/src/behavior/dataset.py:36: DtypeWarning: Columns (1) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(labels_csv)
+/workspace/src/behavior/dataset.py:36: DtypeWarning: Columns (1) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(labels_csv)
+Train: 89704  Val: 2531
+/opt/conda/lib/python3.10/site-packages/torch/nn/modules/conv.py:605: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /opt/conda/conda-bld/pytorch_1712608935911/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv3d(
+/opt/conda/lib/python3.10/site-packages/torch/nn/modules/conv.py:605: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /opt/conda/conda-bld/pytorch_1712608935911/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv3d(
+Epoch   1 | lr=0.00e+00 | train_loss=0.5457 train_f1=0.7295 | val_loss=2.2868 val_macro_f1=0.1850
+         per-class val F1: Standing=0.239  Lying=0.494  Foraging=0.457  Drinking=0.086  Ruminating=0.020  Grooming=0.000  Other=0.000
+  -> new best val_macro_f1=0.1850
+Epoch   2 | lr=1.67e-05 | train_loss=0.1881 train_f1=0.9231 | val_loss=1.9766 val_macro_f1=0.2138
+         per-class val F1: Standing=0.477  Lying=0.457  Foraging=0.400  Drinking=0.081  Ruminating=0.081  Grooming=0.000  Other=0.000
+  -> new best val_macro_f1=0.2138
+Epoch   3 | lr=3.33e-05 | train_loss=0.1664 train_f1=0.9358 | val_loss=2.3457 val_macro_f1=0.2122
+         per-class val F1: Standing=0.461  Lying=0.147  Foraging=0.646  Drinking=0.053  Ruminating=0.178  Grooming=0.000  Other=0.000
+Epoch   4 | lr=5.00e-05 | train_loss=0.1382 train_f1=0.9478 | val_loss=2.8289 val_macro_f1=0.2214
+         per-class val F1: Standing=0.443  Lying=0.524  Foraging=0.448  Drinking=0.097  Ruminating=0.038  Grooming=0.000  Other=0.000
+  -> new best val_macro_f1=0.2214
+Epoch   5 | lr=4.98e-05 | train_loss=0.1132 train_f1=0.9580 | val_loss=3.3254 val_macro_f1=0.1519
+         per-class val F1: Standing=0.455  Lying=0.027  Foraging=0.456  Drinking=0.033  Ruminating=0.093  Grooming=0.000  Other=0.000
+Epoch   6 | lr=4.93e-05 | train_loss=0.0942 train_f1=0.9648 | val_loss=3.3362 val_macro_f1=0.1697
+         per-class val F1: Standing=0.495  Lying=0.209  Foraging=0.375  Drinking=0.051  Ruminating=0.058  Grooming=0.000  Other=0.000
+Epoch   7 | lr=4.85e-05 | train_loss=0.0798 train_f1=0.9699 | val_loss=3.7117 val_macro_f1=0.1611
+         per-class val F1: Standing=0.491  Lying=0.100  Foraging=0.468  Drinking=0.000  Ruminating=0.068  Grooming=0.000  Other=0.000
+Epoch   8 | lr=4.73e-05 | train_loss=0.0686 train_f1=0.9738 | val_loss=6.3280 val_macro_f1=0.0995
+         per-class val F1: Standing=0.425  Lying=0.000  Foraging=0.272  Drinking=0.000  Ruminating=0.000  Grooming=0.000  Other=0.000
+Epoch   9 | lr=4.59e-05 | train_loss=0.0609 train_f1=0.9765 | val_loss=4.6758 val_macro_f1=0.1661
+         per-class val F1: Standing=0.456  Lying=0.068  Foraging=0.601  Drinking=0.029  Ruminating=0.010  Grooming=0.000  Other=0.000
+Epoch  10 | lr=4.41e-05 | train_loss=0.0552 train_f1=0.9782 | val_loss=6.3088 val_macro_f1=0.1747
+         per-class val F1: Standing=0.502  Lying=0.057  Foraging=0.627  Drinking=0.037  Ruminating=0.000  Grooming=0.000  Other=0.000
+Epoch  11 | lr=4.21e-05 | train_loss=0.0399 train_f1=0.9831 | val_loss=5.9160 val_macro_f1=0.1338
+         per-class val F1: Standing=0.452  Lying=0.086  Foraging=0.322  Drinking=0.040  Ruminating=0.037  Grooming=0.000  Other=0.000
+Epoch  12 | lr=3.99e-05 | train_loss=0.0406 train_f1=0.9837 | val_loss=7.4213 val_macro_f1=0.0938
+         per-class val F1: Standing=0.432  Lying=0.003  Foraging=0.217  Drinking=0.000  Ruminating=0.005  Grooming=0.000  Other=0.000
+Early stopping at epoch 12 (patience=8)
+Done. Best val_macro_f1=0.2214. Outputs in runs/behavior/videomae_cvb_to_cbvd5_v2

@@ -1,0 +1,31 @@
+# cattle-vision-framework — data preprocessing image
+# Covers scripts 01-04, 09, 12: format conversion, merging, tubelet export, analytics
+# CPU-only; no GPU needed
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
+
+LABEL maintainer="Sakif Khan <sakif@txstate.edu>"
+LABEL description="CPU data preprocessing: dataset conversion, tubelet export, analytics"
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Python deps ───────────────────────────────────────────────────────────────
+RUN pip install --no-cache-dir \
+    pycocotools \
+    opencv-python-headless \
+    pandas \
+    pyyaml \
+    tqdm \
+    matplotlib \
+    scikit-learn
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /workspace
+
+ENTRYPOINT ["python3"]

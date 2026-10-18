@@ -1,0 +1,31 @@
+Device: cuda
+/workspace/src/behavior/dataset.py:36: DtypeWarning: Columns (1) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(labels_csv)
+/workspace/src/behavior/dataset.py:36: DtypeWarning: Columns (1) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(labels_csv)
+Train: 22791  Val: 2531
+/opt/conda/lib/python3.10/site-packages/torch/nn/modules/conv.py:605: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /opt/conda/conda-bld/pytorch_1712608935911/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv3d(
+/opt/conda/lib/python3.10/site-packages/torch/nn/modules/conv.py:605: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /opt/conda/conda-bld/pytorch_1712608935911/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv3d(
+Epoch   1 | lr=0.00e+00 | train_loss=0.8344 train_f1=0.4579 | val_loss=0.6086 val_macro_f1=0.4515
+         per-class val F1: Standing=0.801  Lying=0.735  Foraging=0.916  Drinking=0.465  Ruminating=0.243  Grooming=0.000  Other=0.000
+  -> new best val_macro_f1=0.4515
+Epoch   2 | lr=1.67e-05 | train_loss=0.3897 train_f1=0.5987 | val_loss=1.2303 val_macro_f1=0.3669
+         per-class val F1: Standing=0.728  Lying=0.747  Foraging=0.557  Drinking=0.435  Ruminating=0.102  Grooming=0.000  Other=0.000
+Epoch   3 | lr=3.34e-05 | train_loss=0.2950 train_f1=0.6309 | val_loss=0.8980 val_macro_f1=0.4278
+         per-class val F1: Standing=0.808  Lying=0.727  Foraging=0.899  Drinking=0.468  Ruminating=0.093  Grooming=0.000  Other=0.000
+Epoch   4 | lr=5.00e-05 | train_loss=0.2375 train_f1=0.6503 | val_loss=1.4240 val_macro_f1=0.4051
+         per-class val F1: Standing=0.798  Lying=0.693  Foraging=0.661  Drinking=0.504  Ruminating=0.180  Grooming=0.000  Other=0.000
+Epoch   5 | lr=4.98e-05 | train_loss=0.1770 train_f1=0.6689 | val_loss=1.5163 val_macro_f1=0.4044
+         per-class val F1: Standing=0.816  Lying=0.738  Foraging=0.778  Drinking=0.400  Ruminating=0.099  Grooming=0.000  Other=0.000
+Epoch   6 | lr=4.93e-05 | train_loss=0.1400 train_f1=0.6796 | val_loss=1.6919 val_macro_f1=0.4009
+         per-class val F1: Standing=0.806  Lying=0.667  Foraging=0.561  Drinking=0.513  Ruminating=0.258  Grooming=0.000  Other=0.000
+Epoch   7 | lr=4.85e-05 | train_loss=0.1094 train_f1=0.6880 | val_loss=2.0162 val_macro_f1=0.4068
+         per-class val F1: Standing=0.829  Lying=0.645  Foraging=0.654  Drinking=0.496  Ruminating=0.224  Grooming=0.000  Other=0.000
+Epoch   8 | lr=4.73e-05 | train_loss=0.1035 train_f1=0.6914 | val_loss=1.8440 val_macro_f1=0.4246
+         per-class val F1: Standing=0.818  Lying=0.682  Foraging=0.829  Drinking=0.426  Ruminating=0.218  Grooming=0.000  Other=0.000
+Epoch   9 | lr=4.59e-05 | train_loss=0.0895 train_f1=0.6948 | val_loss=2.5071 val_macro_f1=0.3911
+         per-class val F1: Standing=0.807  Lying=0.720  Foraging=0.571  Drinking=0.482  Ruminating=0.158  Grooming=0.000  Other=0.000
+Early stopping at epoch 9 (patience=8)
+Done. Best val_macro_f1=0.4515. Outputs in runs/behavior/videomae_cbvd5_v2

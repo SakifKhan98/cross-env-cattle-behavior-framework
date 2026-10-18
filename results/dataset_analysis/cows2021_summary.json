@@ -1,0 +1,22 @@
+{
+  "dataset": "cows2021",
+  "total_images_or_frames": 10402,
+  "total_annotations": 13178,
+  "splits": {
+    "train": 7248,
+    "val": 1023,
+    "test": 2131
+  },
+  "class_distribution": {
+    "cattle torso": 13178
+  },
+  "resolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "has_behavior_labels": false,
+  "evaluation_scope": [
+    "detection_map",
+    "tracking_idf1"
+  ]
+}
